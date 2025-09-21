@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from domain.user import userRouter
 
 app = FastAPI()
 
@@ -6,7 +7,4 @@ app = FastAPI()
 async def root():
     return {"message": "Hello, FastAPI!"}
 
-@app.post("/signup")
-async def signup():
-    return None
-
+app.include_router(userRouter.router)

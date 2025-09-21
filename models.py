@@ -1,5 +1,5 @@
 from database import Base
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 
 class user(Base):
@@ -21,6 +21,8 @@ class person(Base):
     id = Column(Integer, autoincrement=True, primary_key=True)
     name = Column(String(16), unique=True, nullable=True)
     money = Column(Integer, default=0)
+    
+    user_id = Column(Integer, ForeignKey("users.id"))
     
     owner = relationship('user', back_populates='people')
     

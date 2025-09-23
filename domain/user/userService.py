@@ -27,7 +27,7 @@ def createUser(db : Session, userCreate: userCreate):
 def login_process(formData : OAuth2PasswordRequestForm,
                   db : Session):
     ch_id = get_id(db, formData.username)
-    print(ch_id)
+
     if not ch_id or not pw_context.verify(formData.password, ch_id.user_password):
         raise HTTPException(status_code= status.HTTP_401_UNAUTHORIZED,
                             detail="아이디나 비빌번호를 확인하세요",
